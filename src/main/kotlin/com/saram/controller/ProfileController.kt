@@ -15,8 +15,8 @@ class ProfileController(
     fun getProfileDto(@PathVariable id: Long) {
     }
 
-    @PostMapping
-    fun createProfile(@RequestBody profileRequestDto: ProfileRequestDto): ResponseEntity<Void> {
+    @PutMapping
+    fun updateProfile(@RequestBody profileRequestDto: ProfileRequestDto): ResponseEntity<Void> {
         profileService.updateProfile(profileRequestDto)
 
         return ResponseEntity(HttpStatus.CREATED)

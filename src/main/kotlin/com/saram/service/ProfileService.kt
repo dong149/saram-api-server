@@ -19,6 +19,7 @@ class ProfileService(private val userRepository: UserRepository) {
         }
 
         updateUser(user, profileRequestDto)
+        userRepository.save(user)
     }
 
     private fun updateUser(user: User, profileRequestDto: ProfileRequestDto): User {
