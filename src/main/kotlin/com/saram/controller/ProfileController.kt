@@ -1,15 +1,24 @@
 package com.saram.controller
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.saram.model.dto.request.ProfileRequestDto
+import com.saram.service.ProfileService
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/profiles")
-class ProfileController {
+class ProfileController(
+    private val profileService: ProfileService
+) {
     @GetMapping("/{id}")
     fun getProfileDto(@PathVariable id: Long) {
+    }
 
+    @PostMapping
+    fun createProfile(@RequestBody profileRequestDto: ProfileRequestDto): ResponseEntity<Void> {
+        profileService.updateProfile(profileRequestDto)
+
+        return ResponseEntity(HttpStatus.CREATED)
     }
 }

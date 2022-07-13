@@ -9,9 +9,14 @@ class User(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
     @Column(nullable = false)
-    val name: String? = null,
+    var name: String? = null,
     @Column(nullable = false)
-    val password: String? = null,
+    var password: String? = null,
     @Column(nullable = false)
-    val email: String? = null,
+    var email: String? = null,
+    @Column(nullable = false)
+    var description: String? = null,
+    // TODO : enum 으로 변경
+    @Column(nullable = false)
+    var university: String? = null,
 ) : BaseEntity()
